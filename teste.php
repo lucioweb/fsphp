@@ -191,7 +191,7 @@
 <body>
     <div class="main_page">
         <div class="page_header floating_element">
-            <img src="/openlogo-75.png" alt="Debian Logo" class="floating_element" />
+            <img src="/img/openlogo-75.png" alt="Debian Logo" class="floating_element" />
             <span class="floating_element">
                 Página padrão do Apache2 no Debian 12 para o domínio fsphp.
             </span>

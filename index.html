@@ -1,3 +1,62 @@
-<h1>It works!</h1>
-
-<p>Página padrão do Apache2 no Debian 12 para o domínio fsphp em SSH.</p>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="container" style="float: left;">
+        <picture>
+            <figure>
+                <img src="img/apache.png" width="10%">
+            </figure>
+        </picture>
+    </div>
+    <h1>Hello FSPSP!</h1>
+    <p>Essa página substitui a página padrão de teste do Apache.<br>
+        Se você chegou até aqui é porque seu servidor Apache, com
+        PHP 8.1.2-1ubuntu2.17 (cli) e MySQL Ver 8.0.36, rodando em VPN LINUX com Debian 12, foi instalado e configurado com sucesso.</p>
+    <p>Parabéns!<br>
+        Você pode acessar a página de destino padrão do Apache para confirmar que o software está funcionando
+        corretamente através do seu endereço IP.</p>
+    <h4>Descubra o seu enderço IP com o comando </h4>
+    <p><code>$ hostname -I</code></p>
+    <h4>Acesse a página de boas vindas do apache no host(var/www/php), cujas etapas de criação e configuração são descritas nos próximos passos.</h4>
+    <p><code>http://88.198.104.148/index.html</code></p>
+    <h4>Configurando Hosts Virtuais (Recomendado)</h4>
+    <p>Ao usar o servidor Web Apache, você pode usar hosts virtuais (similares a blocos de servidor no Nginx) para
+        encapsular detalhes de configuração e
+        hospedar mais de um domínio de um único servidor.
+        Vamos configurar um domínio chamado <strong>PHP</strong>.
+        O Apache no Debian tem um bloco de servidor habilitado por padrão que está configurado para servir documentos do
+        diretório <code>/var/www/html</code>.
+        Enquanto isso funciona bem para um único site, ele pode tornar-se indevido se você estiver hospedando vários
+        sites.
+        Ao invés de modificar o /var/www/html, vamos criar uma estrutura de diretórios dentro do /var/www para um site (<strong>PHP</strong>),
+        deixando o /var/www/html
+        no lugar como o diretório padrão para ser exibido se um pedido de cliente não corresponder a nenhum outro site.
+    </p>
+    <p>Para que o Apache sirva este conteúdo, é necessário criar um arquivo de host virtual com as diretivas corretas.
+        <br>
+        Em vez de modificar o arquivo de configuração padrão localizado em <code>/etc/apache2/sites-available/000-default.conf</code>
+        diretamente, que carrega a página de teste padrão do Apache, <br>criamos um novo em <code>/etc/apache2/sites-available/php.conf</code>.
+        Agora basta desabilitarmos um (<code>sudo a2dissite 000-default.conf</code>) e habilitarmos o outro (<code>sudo
+            a2ensite php.conf</code>).
+    </p>
+    <h4>Criando o diretório do host</h4>
+    <p><code>$ sudo mkdir /var/www/php</code></p>
+    <h4>A seguir, crie uma página de amostra <code>index.html</code> utilizando o nano ou seu editor favorito:</h4>
+    <p><code>$ sudo nano /var/www/php/index.html</code></p>
+    <h4>Inicie seu servidor apache com esse comando no terminal: </h4>
+    <p><code>$ sudo service apache2 start</code></p>
+    <h4>Caminho do host:</h4>
+    <p><code>$/ cd var/www/php</code></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</body>
+</html>
