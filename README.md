@@ -69,6 +69,12 @@ O comando acima retorna:
     sudo mysql_secure_installation
 #### - STATUS DO SERVIÇO DO MySQL Community Server
     service mysql status
+    service mysql reload
+#### - O servidor MySQL é iniciado automaticamente após a instalação. Você pode verificar o status do servidor MySQL com o seguinte comando:
+    systemctl status mysql //Funcionou
+
+>**Alert**
+Se o sistema operacional estiver habilitado para systemd, comandos systemctl padrão (ou alternativamente, service com os argumentos invertidos) como stop , start , status e restart devem ser usados ​​para gerenciar o serviço do servidor MySQL. 
 #### - ACESSANDO O SERVIDOR DE BANCO DE DADOS MYSQL - USUÁRIO ` root `
     mysql
 #### - EXIBINDO AS BASES DE DADOS NO SERVIDOR
@@ -89,6 +95,18 @@ O comando acima retorna:
     | sys                |
     +--------------------+
     9 rows in set (0.01 sec)
+#### - Criando a base de dados
+    CREATE DATABASE crud CHARACTER SET utf8 COLLATE utf8_general_ci;
+#### - Criando a tabela ` tbl_usuarios`
+    create table tbl_usuarios
+    (
+        id int auto_increment primary key,
+        first_name varchar(50) not null ,
+        last_name  varchar(50) not null,
+        email      varchar(50) not null,
+        message    varchar(20) not null,
+        ts timestamp null
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 </details>
 
 <details>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
+    <title>FSPHP</title>
     <!-- Bootstrap 5.3.0 - CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -35,14 +35,14 @@
 
 <main class="container">
     <div class="bg-light p-5 rounded">
-        <h1>CRUD com PHP</h1>
+        <h1>CRUD com PHP e MySQL</h1>
         <p class="lead">Exemplo de aplicação CRUD (Create, Read, Update e Delete)
             utilizando PHP 8.1.2, Mysql Server Ver 8.0.36, Bootstrap 5.3.0, Apache 2.4, Ubuntu 22.04.2
             LTS, rodando em servidor virtual privado. Aplicação com foco apenas
             nas operações básicas do CRUD. <br>Aspectos como segurança, validação de dados, autenticação,
             gerenciamento cokies e geração de HTML dinâmico, entre outros, foram considerados
             subjacentes.</p>
-        <a class="btn btn-danger btn-md" href="data_table.php" role="button">Start CRUD &raquo;</a>
+        <a class="btn btn-danger btn-md" href="cadastrar.php" role="button">Start CRUD &raquo;</a>
     </div>
 </main>
 <!--Scripts adicionais do próprio Bootstratp-->
