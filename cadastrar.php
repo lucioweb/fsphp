@@ -16,32 +16,32 @@
 <h1 class="text-center mt-4">CADASTRO</h1>
 <div class="container mx-auto my-auto" style="width: 100%;">
     <?php
-    require_once "connection_crud_pdo.php";
+    require_once "connection_db_crud_pdo.php";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $last_name = $_POST['last_name'];
         $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
         $email = $_POST['email'];
         $message = $_POST['message'];
         $ts =$_POST['ts'];
 
-        $sql = 'INSERT INTO tbl_usuarios (last_name, first_name, email, message, ts) VALUES (:last_name, :first_name, :email, :message, NOW())';
+        $sql = 'INSERT INTO tbl_users (first_name, last_name, email, message, ts) VALUES (:first_name, :last_name, :email, :message, NOW())';
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':last_name', $last_name);
         $stmt->bindParam(':first_name', $first_name);
+        $stmt->bindParam(':last_name', $last_name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':message', $message);
 
 
 
         if ($stmt->execute()) {
-            echo 'Dados inseridos com sucesso!';
+            echo "Dados de $first_name inseridos com sucesso!";
         } else {
             echo 'Erro ao inserir dados.';
         }
     }
     ?>
 
-    <form class="row g-3" action="" method="post" name="cadastro_usuario">
+    <form class="row g-3" action="data_table.php" method="post" name="cadastro_usuario">
         <div class="col-12 mb-3">
             <label for="first_name" class="form-label">NOME</label>
             <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Nome completo">

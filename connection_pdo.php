@@ -8,8 +8,8 @@
 $host = "localhost";
 $username = "user1";
 $password = "password1";
-$database = "exemplo1";
-$table = "tbl_todo_list";
+$database = "db_crud";
+$table = "tbl_users";
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$database", $username, $password);

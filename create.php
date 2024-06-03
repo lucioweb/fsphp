@@ -21,7 +21,7 @@
 <h1 class="text-center mt-4">CADASTRO</h1>
 <div class="mx-auto" style="width: 600px;">
     <?php
-    require_once "connection_crud_pdo.php";
+    require_once "connection_db_crud_pdo.php";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $last_name = $_POST['last_name'];
         $first_name = $_POST['first_name'];

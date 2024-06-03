@@ -12,7 +12,7 @@
 <h1 class="text-center mt-4">TESTANDO A CONEXÃO</h1>
 <div class="mx-auto" style="width: 600px;">
     <?php
-    require_once "connection_pdo.php";
+    require_once "connection_db_crud_pdo.php";
     ?>
 </div>
 </body>

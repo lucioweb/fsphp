@@ -95,9 +95,9 @@ O comando acima retorna:
     +--------------------+
     9 rows in set (0.01 sec)
 #### - Criando a base de dados
-    CREATE DATABASE crud CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+    CREATE DATABASE db_crud CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 #### - Criando a tabela ` tbl_usuarios`
-    create table tbl_usuarios
+    create table tbl_users
     (
         id int auto_increment primary key,
         first_name varchar(50) not null ,
@@ -105,12 +105,13 @@ O comando acima retorna:
         email      varchar(50) not null,
         message    varchar(20) not null,
         ts timestamp null
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
     
-#### - Exibindo os charset
+    ALTER TABLE tbl_usuarios MODIFY first_name varchar(50) COLLATE utf8mb4_0900_ai_ci;
+#### - Exibindo os charset `SHOW CHARACTER SET`
 > Repare que para o charset `utf8mb4` a collation é `utf8mb4_0900_ai_ci`.
+    
     mysql> SHOW CHARACTER SET;
-
     +----------+---------------------------------+---------------------+--------+
     | Charset  | Description                     | Default collation   | Maxlen |
     +----------+---------------------------------+---------------------+--------+
@@ -157,6 +158,64 @@ O comando acima retorna:
     | utf8mb4  | UTF-8 Unicode                   | utf8mb4_0900_ai_ci  |      4 |
     +----------+---------------------------------+---------------------+--------+
     41 rows in set (0.01 sec)
+    
+    SHOW CHARACTER SET LIKE 'utf%';
+    +---------+------------------+--------------------+--------+
+    | Charset | Description      | Default collation  | Maxlen |
+    +---------+------------------+--------------------+--------+
+    | utf16   | UTF-16 Unicode   | utf16_general_ci   |      4 |
+    | utf16le | UTF-16LE Unicode | utf16le_general_ci |      4 |
+    | utf32   | UTF-32 Unicode   | utf32_general_ci   |      4 |
+    | utf8mb3 | UTF-8 Unicode    | utf8mb3_general_ci |      3 |
+    | utf8mb4 | UTF-8 Unicode    | utf8mb4_0900_ai_ci |      4 |
+    +---------+------------------+--------------------+--------+
+    5 rows in set (0.01 sec)
+>Entra sem a senha do root
+>    
+    root@cloud18344:~# mysql -u root -p
+    Enter password: 
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 297
+    Server version: 8.0.36-0ubuntu0.22.04.1 (Ubuntu)
+    
+    Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+    
+    Oracle is a registered trademark of Oracle Corporation and/or its
+    affiliates. Other names may be trademarks of their respective
+    owners.
+    
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    
+    mysql> 
+>Alterando o método de autenticação do root. O comando `ALTER USER` altera o método de autenticação do usuário root para um que use uma senha. O exemplo a seguir altera o método de autenticação para `mysql_native_password`:
+
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Diferent@1968#';
+>Alterando o método de autenticação do root. O comando `ALTER USER` altera o método de autenticação do usuário root para um que use uma senha. O exemplo a seguir altera o método de autenticação para `caching_sha2_password`:
+
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'Diferent@1968#';
+>Agora:
+>
+    root@cloud18344:~# mysql -u root -p
+    Enter password: Diferent@****# 
+> 
+>Verificando quais métodos de autenticação cada usuário utiliza
+   
+    SELECT user,authentication_string,plugin,host FROM mysql.user;
+>Retorna:
+    
+    mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
+    +------------------+------------------------------------------------------------------------+-----------------------+-----------+
+    | user             | authentication_string                                                  | plugin                | host      |
+    +------------------+------------------------------------------------------------------------+-----------------------+-----------+
+    | user1            | *668425423DB5193AF921380129F465A6425216D0                              | mysql_native_password | %         |
+    | debian-sys-maint | $A$005N]s;"azZNI
+    T       OaijZQpZxQlq2DwIy3GfWsMGGFn/wV2YlH//rNbQExVNT9 | caching_sha2_password | localhost |
+    | mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+    | mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+    | mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+    | root             | *0B65A16710B01533DBAA7AA5CC7AB93313B0ACD4                              | mysql_native_password | localhost |
+    +------------------+------------------------------------------------------------------------+-----------------------+-----------+
+    6 rows in set (0.00 sec)
 
 </details>
 
