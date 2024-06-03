@@ -53,12 +53,12 @@ O Comando acima retorna:
 <details>
 <summary>MYSQL :eye: </summary> 
 
-#### - Versão do MySql instalada     
+#### - VERSÃO INSTALADA DO MYSQL     
      mysql -V
 O comando acima retorna:
      
      mysql  Ver 8.0.36-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
-#### - Versão do Maria DB instalada
+#### - VERSÃO INSTALADA DO MARIA DB
     mariadb -V
 O comando acima retorna:
 
@@ -67,13 +67,17 @@ O comando acima retorna:
     sudo apt install mysql-server    
 #### - EXECUTANDO O SCRIPT DE SEGURANÇA            
     sudo mysql_secure_installation
-#### - STATUS DO SERVIÇO DO MySQL Community Server
+#### - STATUS, START, RELOAD, STOP DO SERVIÇO DO MySQL
     service mysql status
+    service mysql start
+    service mysql stop
     service mysql reload
-#### - O servidor MySQL é iniciado automaticamente após a instalação. Você pode verificar o status do servidor MySQL com o seguinte comando:
-    systemctl status mysql //Funcionou
+   
 
->Se o sistema operacional estiver habilitado para systemd, comandos systemctl padrão (ou alternativamente, service com os argumentos invertidos) como stop , start , status e restart devem ser usados ​​para gerenciar o serviço do servidor MySQL. 
+O servidor MySQL é iniciado automaticamente após a instalação. Você pode verificar o status do servidor MySQL com o seguinte comando:
+Se o sistema operacional estiver habilitado para systemd, comandos systemctl padrão (ou alternativamente, service com os argumentos invertidos) como stop , start , status e restart devem ser usados ​​para gerenciar o serviço do servidor MySQL. 
+    
+    systemctl status mysql //Funcionou
 #### - ACESSANDO O SERVIDOR DE BANCO DE DADOS MYSQL - USUÁRIO ` root `
     mysql
 #### - EXIBINDO AS BASES DE DADOS NO SERVIDOR
@@ -94,9 +98,9 @@ O comando acima retorna:
     | sys                |
     +--------------------+
     9 rows in set (0.01 sec)
-#### - Criando a base de dados
+#### - CRIANDO A BASE DE DADOS `db_crud`
     CREATE DATABASE db_crud CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-#### - Criando a tabela ` tbl_usuarios`
+#### - CRIANDO NA BASE DE DADOS `db_crud`, A TABELA `tbl_users`.
     create table tbl_users
     (
         id int auto_increment primary key,
@@ -106,11 +110,9 @@ O comando acima retorna:
         message    varchar(20) not null,
         ts timestamp null
     )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-    
-    ALTER TABLE tbl_usuarios MODIFY first_name varchar(50) COLLATE utf8mb4_0900_ai_ci;
-#### - Exibindo os charset `SHOW CHARACTER SET`
-> Repare que para o charset `utf8mb4` a collation é `utf8mb4_0900_ai_ci`.
-    
+#### - ALTERANDO A COLLATE DO CAMPO `first_mame` DA TABELA `tbl_users`.     
+    ALTER TABLE tbl_users MODIFY first_name varchar(50) COLLATE utf8mb4_0900_ai_ci;
+#### - EXIBINDO OS CHARSET `SHOW CHARACTER SET`    
     mysql> SHOW CHARACTER SET;
     +----------+---------------------------------+---------------------+--------+
     | Charset  | Description                     | Default collation   | Maxlen |
@@ -158,7 +160,8 @@ O comando acima retorna:
     | utf8mb4  | UTF-8 Unicode                   | utf8mb4_0900_ai_ci  |      4 |
     +----------+---------------------------------+---------------------+--------+
     41 rows in set (0.01 sec)
-    
+> Repare que para o charset `utf8mb4` a collation é `utf8mb4_0900_ai_ci`.
+#### - EXIBINDO OS CHARSET QUE CONTENHAM `utf...`    
     SHOW CHARACTER SET LIKE 'utf%';
     +---------+------------------+--------------------+--------+
     | Charset | Description      | Default collation  | Maxlen |
@@ -171,7 +174,7 @@ O comando acima retorna:
     +---------+------------------+--------------------+--------+
     5 rows in set (0.01 sec)
 >Entra sem a senha do root
->    
+
     root@cloud18344:~# mysql -u root -p
     Enter password: 
     Welcome to the MySQL monitor.  Commands end with ; or \g.
