@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Server">
+  <component name="PublishConfigData" autoUpload="Always">
     <serverData>
-      <paths name="Server">
+      <paths name="Server PHP 8.1">
         <serverdata>
           <mappings>
-            <mapping deploy="/var/www/fsphp" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/crud" local="$PROJECT_DIR$/../crud" web="" />
           </mappings>
         </serverdata>
       </paths>

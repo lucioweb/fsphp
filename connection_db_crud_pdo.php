@@ -7,8 +7,8 @@
 
 $host = "localhost";
 $database = "db_crud";
-$username = "root";
-$password = "Diferent@1968#";
+$username = "user1";
+$password = "password1";
 $table = "tbl_users";
 
 try {

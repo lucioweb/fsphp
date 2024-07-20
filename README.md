@@ -11,7 +11,7 @@
 </div>
 
 <details>
-<summary>CONFIGURAÇÕES DO SERVIDOR 👋 :eye: </summary> 
+<summary>CONFIGURAÇÕES DO SERVIDOR REMOTO 👋 :eye: </summary> 
 
 - HOST: 88.198.104.148
 - USER: ************
@@ -73,13 +73,32 @@ O comando acima retorna:
     service mysql stop
     service mysql reload
    
-
 O servidor MySQL é iniciado automaticamente após a instalação. Você pode verificar o status do servidor MySQL com o seguinte comando `systemctl status mysql`.
 Se o sistema operacional estiver habilitado para systemd, comandos systemctl padrão (ou alternativamente, service com os argumentos invertidos) como stop , start , status e restart devem ser usados ​​para gerenciar o serviço do servidor MySQL. 
     
     systemctl status mysql //Funcionou
-#### - ACESSANDO O SERVIDOR DE BANCO DE DADOS MYSQL - USUÁRIO ` root `
-    mysql
+#### - ACESSANDO O SERVIDOR DE BANCO DE DADOS MYSQL COMO USUÁRIO ROOT
+    root@cloud18344:~# mysql
+Ou:
+
+    root@cloud18344:~# mysql -u root -p
+O comando acima retorna:
+
+    Enter password: 
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 297
+    Server version: 8.0.36-0ubuntu0.22.04.1 (Ubuntu)
+        
+    Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+        
+    Oracle is a registered trademark of Oracle Corporation and/or its
+    affiliates. Other names may be trademarks of their respective
+    owners.
+        
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+        
+    mysql> 
+>Repare que o mysql não exigiu autenticação. É possível logar no servidor sem ter que digitar a senha.
 #### - EXIBINDO AS BASES DE DADOS NO SERVIDOR
     mysql> show databases;
 O comando acima retorna:
@@ -173,23 +192,7 @@ O comando acima retorna:
     | utf8mb4 | UTF-8 Unicode    | utf8mb4_0900_ai_ci |      4 |
     +---------+------------------+--------------------+--------+
     5 rows in set (0.01 sec)
->Entra sem a senha do root
 
-    root@cloud18344:~# mysql -u root -p
-    Enter password: 
-    Welcome to the MySQL monitor.  Commands end with ; or \g.
-    Your MySQL connection id is 297
-    Server version: 8.0.36-0ubuntu0.22.04.1 (Ubuntu)
-    
-    Copyright (c) 2000, 2024, Oracle and/or its affiliates.
-    
-    Oracle is a registered trademark of Oracle Corporation and/or its
-    affiliates. Other names may be trademarks of their respective
-    owners.
-    
-    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-    
-    mysql> 
 >Alterando o método de autenticação do root. O comando `ALTER USER` altera o método de autenticação do usuário root para um que use uma senha. O exemplo a seguir altera o método de autenticação para `mysql_native_password`:
 
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Diferent@1968#';
@@ -287,7 +290,7 @@ Ele oferece uma infinidade de funções úteis como realização de autenticaç�
 #### - INSTALANDO O  `CURL`
     sudo apt install curl
 #### - CURL - VERSÃO DO `CURL` INSTALADA NO DEBIAN
-    curl  -V //Verificando a versão instalada do curl
+    curl -V //Verificando a versão instalada do curl
     curl -L www.alura.com/ //Visualizando o HTML do  site www.alura.com
     curl -O https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso //Fazendo download de arquivos
     curl -i https://www.alura.com/ //Agora temos um retorno diferente. Primeiro temos as informações de cabeçalho.
@@ -478,3 +481,9 @@ Vamos conferir o que o Cargo gerou para nós:
      </IfModule>     
 </details>
 
+#### - CRIANDO A TABLE TODO-LIST
+    CREATE TABLE db_example_database.tbl_todo_list (
+      item_id INT AUTO_INCREMENT,
+      content VARCHAR(255),
+      PRIMARY KEY(item_id)
+    );

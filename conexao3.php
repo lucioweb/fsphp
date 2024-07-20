@@ -1,9 +1,9 @@
 <?php
 $host = "localhost";
-$username = "root";
-$password = "root";
-$database = "exemplos";
-$table = "todo_list";
+$username = "user1";
+$password = "password1";
+$database = "db_example_database";
+$table = "tbl_todo_list";
 
 echo "Database connection using mysqli_connect"."<br>";
 // Create connection
