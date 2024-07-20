@@ -1,6 +1,5 @@
 <div>
 <img src="https://img.shields.io/badge/Ubuntu-A34F26?style=for-the-badge&logo=ubuntu&logoColor=white" alt=""/>
-<img src="https://img.shields.io/badge/Debian-B34F26?style=for-the-badge&logo=debian&logoColor=white" alt=""/>
 <img src="https://img.shields.io/badge/PHP-C34F26?style=for-the-badge&logo=php&logoColor=white" alt=""/>
 <img src="https://img.shields.io/badge/Markdown-E34F26?style=for-the-badge&logo=markdown&logoColor=white" alt=""/>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt=""/>
@@ -8,8 +7,13 @@
 <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt=""/>
 <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt=""/>
 <img src="http://img.shields.io/badge/-PHPStorm-181717?style=for-the-badge&logo=phpstorm&logoColor=white" alt=""/>	
+<img src="https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white" alt=""/>	
+<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white" alt=""/>
+<img src="https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white" alt=""/>
 </div>
-
+<div>
+<img src="https://img.shields.io/badge/R-Studio-blue" alt=""/>
+</div>
 <details>
 <summary>CONFIGURAÇÕES DO SERVIDOR REMOTO 👋 :eye: </summary> 
 
